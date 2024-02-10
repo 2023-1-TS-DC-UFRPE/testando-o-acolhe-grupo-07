@@ -2,9 +2,10 @@ import { Dashboard } from "./pages/dashboard";
 import { Login } from "./pages/login";
 const dashboard = new Dashboard();
 const login = new Login();
+
 const data = {
-  email: Cypress.env("CYPRESS_EMAIL"),
-  password: Cypress.env("CYPRESS_PASSWORD"),
+  email: Cypress.env("EMAIL"),
+  password: Cypress.env("PASSWORD"),
   invalidEmail: "invalidemail@invalid.com",
   invalidPassword: "invalidPassword",
 };
