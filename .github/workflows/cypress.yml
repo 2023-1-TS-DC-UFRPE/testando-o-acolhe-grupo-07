@@ -16,8 +16,16 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      env:
+        EMAIL: ${{ secrets.EMAIL }}
+        PASSWORD: ${{ secrets.PASSWORD }}
+
       - name: Run Cypress Tests
-        run: npx cypress run
+        run: | 
+          export CYPRESS_EMAIL=$EMAIL
+          export CYPRESS_PASSWORD=$PASSWORD
+          npx cypress run
+
 
       - name: Move HTML Report
         run: mv cypress/reports/index.html index.html
