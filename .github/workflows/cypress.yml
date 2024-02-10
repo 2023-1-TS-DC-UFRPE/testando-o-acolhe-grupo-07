@@ -16,11 +16,11 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      env:
-        EMAIL: ${{ secrets.EMAIL }}
-        PASSWORD: ${{ secrets.PASSWORD }}
 
       - name: Run Cypress Tests
+        env:
+          EMAIL: ${{ secrets.EMAIL }}
+          PASSWORD: ${{ secrets.PASSWORD }}
         run: | 
           export CYPRESS_EMAIL=$EMAIL
           export CYPRESS_PASSWORD=$PASSWORD
