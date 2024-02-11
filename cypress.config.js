@@ -9,7 +9,6 @@ module.exports = defineConfig({
     reportPageTitle: "Relatório Acolhe",
     embeddedScreenshots: true,
     inlineAssets: true,
-    videoOnFailOnly: false,
   },
   e2e: {
     setupNodeEvents(on, config) {
