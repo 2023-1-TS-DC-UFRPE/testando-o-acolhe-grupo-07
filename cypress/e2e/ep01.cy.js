@@ -13,7 +13,7 @@ const data = {
 describe("EP01", () => {
   it("Login feito com sucesso", () => {
     cy.visit("/");
-    cy.login(data.email, data.password);
+    cy.login(data.email, data.invalidPassword);
     dashboard.title().should("contain.text", "Painel de Visualização");
   });
 
