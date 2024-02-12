@@ -1,5 +1,5 @@
 export class Sidebar {
-  painelVisualizacao() {
+  painelVisualizacaoButton() {
     return cy
       .get("fuse-vertical-navigation-basic-item")
       .contains("Painel de Visualização");
@@ -10,16 +10,16 @@ export class Sidebar {
       .get(".fuse-vertical-navigation-item-wrapper")
       .contains("Usuários");
   }
-  abrigos() {
+  abrigosButton() {
     return cy.get(".fuse-vertical-navigation-item-wrapper").contains("Abrigos");
   }
-  voluntarios() {
+  voluntariosButton() {
     return cy
       .get(".fuse-vertical-navigation-item-wrapper")
       .contains("Voluntários");
   }
 
-  acolhidos() {
+  acolhidosButton() {
     return cy
       .get(".fuse-vertical-navigation-item-wrapper")
       .contains("Acolhidos");
