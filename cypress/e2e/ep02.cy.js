@@ -28,7 +28,7 @@ describe("ST-03", () => {
     dashboard.title().should("contain.text", "Painel de Visualização");
   });
 
-  it("DOC-11", () => {
+  it("DOC-11 - Campos do abrigo devem possuir dados válidos", () => {
     // Para esse caso, escolhemos não informar o capo 'nome'
     sidebar.abrigosButton().click();
     cy.url().should("include", "/shelters");
