@@ -35,4 +35,8 @@ export class ReceivedPage {
   addMemberButton() {
     return cy.get("button").contains("Membro da Família");
   }
+
+  registerFamilyButton() {
+    return cy.get("button").contains("Cadastrar");
+  }
 }
