@@ -28,7 +28,14 @@ describe("ST-01", () => {
     received.affectedHouse(receivedData.affectedHouse);
     received.addMemberButton().click();
 
-    received.member.isResponsible(receivedData.members[1].isResponsible);
-    received.member.birthDate().type(receivedData.members[1].birthDate);
+    receivedData.members.forEach((member) => {
+      received.member.addMember(member);
+      received.addMemberButton().click();
+    });
+
+    received.member.cancelButton().click();
+    received.registerFamilyButton().click();
+
+    cy.contains("Família cadastrada.").should("be.visible");
   });
 });
