@@ -6,4 +6,8 @@ export class Dashboard {
   deathsLink() {
     return cy.get("a").contains("Óbitos");
   }
+
+  completelyUninhabitable() {
+    return cy.get("a").contains("Completamente inábitavel");
+  }
 }

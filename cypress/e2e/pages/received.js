@@ -6,4 +6,7 @@ export class ReceivedPage {
   verifyReceivedFilter(filter) {
     return cy.get(".button-filter").contains(`Filtros Acolhidos (${filter})`);
   }
+  verifyFamilyFilter(filter) {
+    return cy.get(".button-filter").contains(`Filtros Família (${filter})`);
+  }
 }
