@@ -1,14 +1,14 @@
 import { Shelters } from "./pages/shelters/shelters";
 import { Dashboard } from "./pages/dashboard";
 import { Sidebar } from "./pages/sidebar";
-import { ReceivedPage } from "./pages/shelters/received/received";
+import { FamilyPage } from "./pages/shelters/family/family";
 
-import { receivedData } from "../fixtures/ep03Data";
+import { familyData } from "../fixtures/ep03Data";
 
 const dashboard = new Dashboard();
 const sidebar = new Sidebar();
 const shelters = new Shelters();
-const received = new ReceivedPage();
+const family = new FamilyPage();
 
 describe("ST-01", () => {
   before(() => {
@@ -23,18 +23,18 @@ describe("ST-01", () => {
     shelters.selectTabHeader("Acolhidos").click();
     shelters.addFamilyButton().click();
     shelters.addFamilyManuallyButton().click();
-    received.zipCode().type(receivedData.zipCode);
-    received.number().type(receivedData.number);
-    received.affectedHouse(receivedData.affectedHouse);
-    received.addMemberButton().click();
+    family.zipCode().type(familyData.zipCode);
+    family.number().type(familyData.number);
+    family.affectedHouse(familyData.affectedHouse);
+    family.addMemberButton().click();
 
-    receivedData.members.forEach((member) => {
-      received.member.addMember(member);
-      received.addMemberButton().click();
+    familyData.members.forEach((member) => {
+      family.member.addMember(member);
+      family.addMemberButton().click();
     });
 
-    received.member.cancelButton().click();
-    received.registerFamilyButton().click();
+    family.member.cancelButton().click();
+    family.registerFamilyButton().click();
 
     cy.contains("Família cadastrada.").should("be.visible");
   });

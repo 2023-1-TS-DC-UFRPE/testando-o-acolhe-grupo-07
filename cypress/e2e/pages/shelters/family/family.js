@@ -1,6 +1,6 @@
 import { Member } from "./member";
 
-export class ReceivedPage {
+export class FamilyPage {
   constructor() {
     this.member = new Member();
   }

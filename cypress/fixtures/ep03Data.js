@@ -40,7 +40,7 @@ function generateCPF() {
   return "" + n1 + n2 + n3 + n4 + n5 + n6 + n7 + n8 + n9 + d1 + d2;
 }
 
-export const receivedData = {
+export const familyData = {
   zipCode: "52171-900",
   number: 2,
   affectedHouse: "Sim, está habitável e não precisa de reparos",
