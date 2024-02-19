@@ -34,5 +34,18 @@ class Shelters {
   addFamilyManuallyButton() {
     return cy.get("button").contains("Adicionar Manualmente");
   }
+
+  familyTable() {
+    return cy.get("tbody");
+  }
+
+  selectFirstOnTable() {
+    return cy.get("person-name-clickable").eq(0);
+  }
+
+  editFamilyButton() {
+    return cy.get('[data-mat-icon-name="pencil"]').parent();
+  }
+
 }
 export { Shelters };
