@@ -57,4 +57,13 @@ export class Member {
 
     this.addButton().click();
   }
+
+  updateButton() {
+    return cy.get("button").contains("Atualizar").parent().parent();
+  }
+
+  nameErrorMessage() {
+    return cy.get("mat-error").contains("O nome é obrigatório");
+  }
+  
 }
