@@ -1,4 +1,4 @@
-import { Shelters } from "./pages/abrigos/shelters";
+import { Shelters } from "./pages/shelters/shelters";
 import { Dashboard } from "./pages/dashboard";
 import { Sidebar } from "./pages/sidebar";
 
@@ -17,7 +17,7 @@ const shelterData = {
   },
   phone: "8131812953",
   emailAddress: "barroscarvalho@educ.gov.br",
-  owner: "Julyanne Correia",
+  owner: "Luan Accioly",
   capacity: "50",
 };
 
