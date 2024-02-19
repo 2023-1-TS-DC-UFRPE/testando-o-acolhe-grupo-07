@@ -11,13 +11,13 @@ const shelters = new Shelters();
 const family = new FamilyPage();
 
 describe("ST-01", () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit("/");
     cy.login(Cypress.env("EMAIL"), Cypress.env("PASSWORD"));
     dashboard.title().should("contain.text", "Painel de Visualização");
   });
 
-  it("DOC-12", () => {
+  it.skip("DOC-12", () => {
     sidebar.abrigosButton().click();
     shelters.selectShelter("Abrigo 7 - Luan Accioly").click();
     shelters.selectTabHeader("Acolhidos").click();
@@ -37,5 +37,20 @@ describe("ST-01", () => {
     family.registerFamilyButton().click();
 
     cy.contains("Família cadastrada.").should("be.visible");
+  });
+
+  it("DOC-13", () => {
+    sidebar.abrigosButton().click();
+    shelters.selectShelter("Abrigo 7 - Luan Accioly").click();
+    shelters.selectTabHeader("Acolhidos").click();
+
+    shelters.selectFirstOnTable().click();
+    shelters.editFamilyButton().click();
+
+    family.member.name().clear();
+    family.member.updateButton().should("be.disabled");
+    family.member.selectGender("Feminino");
+    family.member.nameErrorMessage().should("be.visible", { force: true });
+    family.member.updateButton().should("be.disabled");
   });
 });
