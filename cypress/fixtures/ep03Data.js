@@ -89,3 +89,55 @@ export const familyData = {
     },
   ],
 };
+
+export const shelterData = {
+  "isActive": true,
+  "capacity": 30,
+  "zipCode": "52171900",
+  "street": "Rua Manuel de Medeiros",
+  "complement": "",
+  "neighborhood": "",
+  "number": "2",
+  "city": "Recife",
+  "state": "PE",
+  "name": "RDL - Melhor do Mundo",
+  "email": "naruto@konoha.com.br",
+  "phone": "81940028922",
+  "note": "",
+  "owner": {
+      "id": 13,
+      "name": "Luan Accioly",
+      "phone": "81954543454",
+      "email": "luan.accioly@ufrpe.br",
+      "cpf": "10896755428",
+      "enabled": true,
+      "permissions": [
+          "Gestor do Acolhe"
+      ],
+      "shelters": [],
+      "createdBy": {
+          "id": 1,
+          "name": "John Due",
+          "email": "john@due.com"
+      },
+      "createdAt": "2024-02-06T13:57:43",
+      "lastModifiedBy": {
+          "id": 1,
+          "name": "John Due",
+          "email": "john@due.com"
+      },
+      "lastModifiedAt": "2024-02-09T00:45:30"
+  },
+  "type": "SCHOOL",
+  "address": {
+      "zipCode": "52171900",
+      "street": "Rua Manuel de Medeiros",
+      "number": "2",
+      "complement": "",
+      "neighborhood": "",
+      "city": "Recife",
+      "state": "Pernambuco"
+  },
+  "chiefName": "Luan Accioly",
+  "chiefPhone": "81954543454"
+}
