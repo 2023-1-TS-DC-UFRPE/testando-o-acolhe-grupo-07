@@ -3,7 +3,7 @@ import { Dashboard } from "./pages/dashboard";
 import { Sidebar } from "./pages/sidebar";
 import { FamilyPage } from "./pages/shelters/family/family";
 
-import { familyData } from "../fixtures/ep03Data";
+import { familyData, shelterData } from "../fixtures/ep03Data";
 
 const dashboard = new Dashboard();
 const sidebar = new Sidebar();
@@ -11,6 +11,9 @@ const shelters = new Shelters();
 const family = new FamilyPage();
 
 describe("ST-01", () => {
+  before(() => {
+    cy.createShelter(shelterData)
+  })
   beforeEach(() => {
     cy.visit("/");
     cy.login(Cypress.env("EMAIL"), Cypress.env("PASSWORD"));
@@ -19,7 +22,7 @@ describe("ST-01", () => {
 
   it.skip("DOC-12", () => {
     sidebar.abrigosButton().click();
-    shelters.selectShelter("Abrigo 7 - Luan Accioly").click();
+    shelters.selectShelter(shelterData.name).click();
     shelters.selectTabHeader("Acolhidos").click();
     shelters.addFamilyButton().click();
     shelters.addFamilyManuallyButton().click();
