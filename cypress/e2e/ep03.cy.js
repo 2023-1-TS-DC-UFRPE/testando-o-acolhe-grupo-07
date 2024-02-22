@@ -20,7 +20,7 @@ describe("ST-01", () => {
     dashboard.title().should("contain.text", "Painel de Visualização");
   });
 
-  it.skip("DOC-12", () => {
+  it("DOC-12", () => {
     sidebar.abrigosButton().click();
     shelters.selectShelter(shelterData.name).click();
     shelters.selectTabHeader("Acolhidos").click();
