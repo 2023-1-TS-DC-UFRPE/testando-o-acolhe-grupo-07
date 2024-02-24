@@ -6,36 +6,34 @@ const login = new Login();
 
 Cypress.Commands.add("login", (email, password) => {
   home.loginButton().click();
-  login.emailInput().type(email);
-  login.passwordInput().type(password);
+  login.emailInput().type(email, { log: false });
+  login.passwordInput().type(password, { log: false });
   login.submitButton().click();
 });
 
 Cypress.Commands.add("createShelter", (data) => {
   const getToken = () => {
     const options = {
-      method: 'POST',
+      method: "POST",
       url: "https://acolhebe-disciplina.innovagovlab.org/api/v1/auth/login",
       body: {
-        "password": Cypress.env("PASSWORD"),
-        "username": Cypress.env("EMAIL"), 
-      }
+        password: Cypress.env("PASSWORD"),
+        username: Cypress.env("EMAIL"),
+      },
     };
-    return cy.request(options)
-  }
-  
-  getToken().then(response => {
+    return cy.request(options);
+  };
+
+  getToken().then((response) => {
     const options = {
-      method: 'POST',
+      method: "POST",
       url: "https://acolhebe-disciplina.innovagovlab.org/api/v1/shelter",
       body: data,
       headers: {
         "X-Auth-Token": response.body,
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     };
-    return cy.request(options)
-  })
-
+    return cy.request(options);
+  });
 });
-
