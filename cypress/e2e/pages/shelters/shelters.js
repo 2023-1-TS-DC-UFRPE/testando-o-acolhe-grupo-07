@@ -1,8 +1,10 @@
+import { Necessity } from "./necessity";
 import { ShelterRegister } from "./register";
 
 class Shelters {
   constructor() {
     this.register = new ShelterRegister();
+    this.necessity = new Necessity();
   }
 
   registerButton() {
@@ -47,5 +49,15 @@ class Shelters {
     return cy.get('[data-mat-icon-name="pencil"]').parent();
   }
 
+  editNecessityButton() {
+    return cy.get(
+      "div.ng-star-inserted > .mdc-icon-button > .mat-mdc-button-touch-target"
+    );
+  }
+  cancelEditNecessityButton() {
+    return cy.get(
+      ".card__button > div.ng-star-inserted > .mdc-icon-button > .mat-mdc-button-touch-target"
+    );
+  }
 }
 export { Shelters };
