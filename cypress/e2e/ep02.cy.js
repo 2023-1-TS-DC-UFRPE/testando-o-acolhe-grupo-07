@@ -27,14 +27,14 @@ const shelterData = {
   capacity: "50",
 };
 
-describe("ST-03", () => {
+describe("EP-02 > ST-03", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.login(Cypress.env("EMAIL"), Cypress.env("PASSWORD"));
     dashboard.title().should("contain.text", "Painel de Visualização");
   });
 
-  it.skip("DOC-11 - Campos do abrigo devem possuir dados válidos", () => {
+  it("DOC-11 - Campos do abrigo devem possuir dados válidos", () => {
     // Para esse caso, escolhemos não informar o capo 'nome'
     sidebar.abrigosButton().click();
     cy.url().should("include", "/shelters");

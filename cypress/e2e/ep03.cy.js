@@ -10,17 +10,17 @@ const sidebar = new Sidebar();
 const shelters = new Shelters();
 const family = new FamilyPage();
 
-describe("ST-01", () => {
+describe("EP-03 > ST-01", () => {
   before(() => {
-    cy.createShelter(shelterData)
-  })
+    cy.createShelter(shelterData);
+  });
   beforeEach(() => {
     cy.visit("/");
     cy.login(Cypress.env("EMAIL"), Cypress.env("PASSWORD"));
     dashboard.title().should("contain.text", "Painel de Visualização");
   });
 
-  it("DOC-12", () => {
+  it("DOC-12 - Cadastro da família", () => {
     sidebar.abrigosButton().click();
     shelters.selectShelter(shelterData.name).click();
     shelters.selectTabHeader("Acolhidos").click();
@@ -42,7 +42,7 @@ describe("ST-01", () => {
     cy.contains("Família cadastrada.").should("be.visible");
   });
 
-  it("DOC-13", () => {
+  it("DOC-13 - Falha no cadastro do membro da família por ausência, ou formatação incorreta, de campo obrigatório", () => {
     sidebar.abrigosButton().click();
     shelters.selectShelter("Abrigo 7 - Luan Accioly").click();
     shelters.selectTabHeader("Acolhidos").click();

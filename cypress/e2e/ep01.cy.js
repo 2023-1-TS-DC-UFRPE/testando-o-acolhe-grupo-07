@@ -10,7 +10,7 @@ const data = {
   invalidPassword: "invalidPassword",
 };
 
-describe("ST-01", () => {
+describe("EP-01 > ST-01", () => {
   it("DOC-01 - Login feito com sucesso", () => {
     cy.visit("/");
     cy.login(data.email, data.password);

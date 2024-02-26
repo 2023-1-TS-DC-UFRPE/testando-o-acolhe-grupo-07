@@ -6,24 +6,25 @@ const dashboard = new Dashboard();
 const received = new ReceivedPage();
 const sidebar = new Sidebar();
 
-describe("ST-05", () => {
+describe("EP-06 > ST-05", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.login(Cypress.env("EMAIL"), Cypress.env("PASSWORD"));
     cy.contains("Painel de Visualização").should("be.visible");
   });
 
-
-  it("DOC-04", () => {
-    cy.intercept('GET', 'https://acolhebe-disciplina.innovagovlab.org/api/v1/family?personSituation=pcd&query=&page=0&size=25').as('searchFiltered')
+  it("DOC-04 - Verificar filtro 'Filtros acolhidos' no menu de Acolhidos", () => {
+    cy.intercept(
+      "GET",
+      "https://acolhebe-disciplina.innovagovlab.org/api/v1/family?personSituation=pcd&query=&page=0&size=25"
+    ).as("searchFiltered");
     sidebar.acolhidosButton().click();
     received.receivedFilter().click();
-    received.chooseReceivedFilter('PCDs').click()
-    cy.wait('@searchFiltered').its('response.statusCode').should('eq', 200)
-
+    received.chooseReceivedFilter("PCDs").click();
+    cy.wait("@searchFiltered").its("response.statusCode").should("eq", 200);
   });
 
-  it("DOC-09", () => {
+  it("DOC-09 - Campos do painel clicáveis em situação habitantes", () => {
     const deathURL = "/people-sheltered?filter=%C3%93bitos";
     dashboard.deathsLink().click();
     cy.url().should("contain", deathURL);
@@ -31,7 +32,7 @@ describe("ST-05", () => {
     received.verifyReceivedFilter("Óbitos").should("be.visible");
   });
 
-  it("DOC-10", () => {
+  it("DOC-10 - Campos do painel clicáveis em situação moradia", () => {
     const completelyUninhabitableURL =
       "/people-sheltered?filter=Completamente%20in%C3%A1bitavel";
     dashboard.completelyUninhabitable().click();
