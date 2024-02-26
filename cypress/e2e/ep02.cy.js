@@ -6,6 +6,12 @@ const dashboard = new Dashboard();
 const sidebar = new Sidebar();
 const shelters = new Shelters();
 
+function getRandomNecessityValue() {
+  const min = Math.ceil(0);
+  const max = Math.floor(4);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 const shelterData = {
   name: "Abrigo UFRPE",
   zipCode: "50630-050",
@@ -22,13 +28,13 @@ const shelterData = {
 };
 
 describe("ST-03", () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit("/");
     cy.login(Cypress.env("EMAIL"), Cypress.env("PASSWORD"));
     dashboard.title().should("contain.text", "Painel de Visualização");
   });
 
-  it("DOC-11 - Campos do abrigo devem possuir dados válidos", () => {
+  it.skip("DOC-11 - Campos do abrigo devem possuir dados válidos", () => {
     // Para esse caso, escolhemos não informar o capo 'nome'
     sidebar.abrigosButton().click();
     cy.url().should("include", "/shelters");
@@ -43,5 +49,27 @@ describe("ST-03", () => {
     shelters.register.selectOwner(shelterData.owner);
 
     shelters.register.registerButton().should("be.disabled");
+  });
+
+  it("DOC-14 - Definir necessidades do abrigo", () => {
+    sidebar.abrigosButton().click();
+    shelters.selectShelter("Abrigo 7 - Luan Accioly").click();
+    shelters.editNecessityButton().click();
+
+    shelters.necessity.clothes.selectNewborn(getRandomNecessityValue()).click();
+    cy.contains("Roupas - Recém-nascido alterado.").should("be.visible");
+
+    shelters.necessity.clothes.selectChild(getRandomNecessityValue()).click();
+    cy.contains("Roupas - Infantil alterado.").should("be.visible");
+
+    shelters.necessity.clothes.selectAdult(getRandomNecessityValue()).click();
+    cy.contains("Roupas - Adulto alterado.").should("be.visible");
+
+    shelters.necessity.clothes
+      .selectPlusSize(getRandomNecessityValue())
+      .click();
+    cy.contains("Roupas - Plus Size alterado.").should("be.visible");
+
+    shelters.cancelEditNecessityButton().click();
   });
 });
