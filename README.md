@@ -2,6 +2,7 @@
 >[!NOTE]
 > Este repositório está configurado com GitHub Actions. Após cada commit na branch `main`, todos os testes são executados e um relatório HTML é gerado. O relatório é hospedado no GitHub Pages para referência futura.
 
+
 ## Executando o projeto
 
 Para executar os testes deste repositório, basta seguir as etapas:
@@ -12,13 +13,13 @@ Para executar os testes deste repositório, basta seguir as etapas:
 git clone git@github.com:2023-1-TS-DC-UFRPE/testando-o-acolhe-grupo-07.git
 ```
 
-2. Instale as dependências do projeto:
+1. Instale as dependências do projeto:
 
 ``` bash
 npm install
 ```
 
-3. Execute o Cypress:
+1. Execute o Cypress:
 
 ```bash
 npx cypress open
@@ -48,3 +49,7 @@ npx cypress run
 ```
 
 Este comando irá gerar um arquivo `index.html` na pasta `./cypress/reports/html`
+
+## Testes Manuais
+
+Os testes manuais criados para a disciplina estão disponíveis [neste link](https://docs.google.com/spreadsheets/d/154lMZysQOOH4rh157Sv1bf7hpE3ZZxd6/edit#gid=821959076)
